@@ -1,0 +1,22 @@
+{
+  "name": "assignment3",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "https": "^1.0.0",
+    "mongoose": "^8.1.2",
+    "newsapi": "^2.4.1"
+  },
+  "description": "This simple web application provides real-time weather information based on user input. Users can enter a city, and the app fetches and displays the current temperature, weather description, and more from the OpenWeatherAPI. The app also integrates with two additional APIs—News API and Flickr API—to enhance functionality and display relevant news articles and city-specific weather images."
+}

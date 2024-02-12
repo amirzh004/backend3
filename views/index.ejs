@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li style="float:right"><a href="/login">Login</a></li>
+        <li style="float:right"><a href="/registration">Registration</a></li>
+    </ul>
+    <div class="container">
+        <h1>Welcome to the Weather App</h1>
+
+        <% if (userIsLoggedIn) { %>
+            <p>Hello, <%= userIsLoggedIn.username %>!</p>
+            <p>Your search history:</p>
+            <form action="/weather" method="post">
+                <label for="searchHistory">Select a city from history:</label>
+                <div class="inputs">
+                    <select id="searchHistory" name="city">
+                        <% userIsLoggedIn.searchHistory.forEach(city => { %>
+                            <option value="<%= city %>"><%= city %></option>
+                        <% }); %>
+                    </select>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+
+            <form action="/weather" method="post">
+                <label for="city">Enter City:</label>
+                <div class="inputs">
+                    <input type="text" id="city" name="city" required>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+
+            <a href="/logout" style="width: 100%; height: 30px;"><h2 style="color: red;">Logout</h2></a>
+
+        <% } else { %>
+            <p>You are not logged in. <a href="/login">Login</a> or <a href="/registration">Register</a></p>
+
+        <% } %>
+    </div>
+</body>
+
+</html>

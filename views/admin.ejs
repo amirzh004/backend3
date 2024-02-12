@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        ul {
+    list-style-type: none;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(0, 191, 255);
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: rgba(0, 191, 255, 0.697);
+  }
+  
+  .active {
+    background-color: #0462aa;
+  }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(0, 191, 255);
+        }
+
+        input {
+            padding: 10px;
+            width: 65%;
+            margin-right: 5%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color:  rgb(0, 191, 255);
+            color: #fff;
+            border: none;
+            width: 30%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:  rgba(0, 191, 255, 0.766);
+        }
+
+        h2 {
+            color: rgb(0, 191, 255);
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        table {
+            width: 90%;
+            max-height: 500px;
+            overflow-y: auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+
+        button{
+            width: 100%;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li style="float:right"><a href="/login">Login</a></li>
+        <li style="float:right"><a href="/registration">Registration</a></li>
+    </ul>
+    <h1 style="margin-top: 80px;">Admin Page - User Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Search History</th>
+                <th>Admin Status</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Deleted At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.searchHistory.join(', ') %></td>
+                    <td><%= user.isAdmin ? 'Admin' : 'User' %></td>
+                    <td><%= user.createdAt %></td>
+                    <td><%= user.updatedAt %></td>
+                    <td><%= user.deletedAt %></td>
+                    <td>
+                        <form action="/admin/edit/<%= user._id %>" method="get">
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form action="/admin/delete/<%= user._id %>" method="post" onsubmit="return confirm('Delete this user?')">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+    <form action="/admin/add" method="get">
+        <button type="submit">Add User</button>
+    </form>
+</body>
+
+</html>

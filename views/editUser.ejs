@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Edit User</title>
+    <style>
+        
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-align: left;
+            color: rgb(0, 191, 255);
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li style="float:right"><a href="/login">Login</a></li>
+        <li style="float:right"><a href="/registration">Registration</a></li>
+    </ul>
+    <div class="container">
+        <h1>Edit User</h1>
+
+        <form action="/admin/edit/<%= user._id %>" method="post">
+            <div style="width: 100%; text-align: left; align-items: start; margin-bottom: 5px;">
+                <label for="username">Username:</label>
+            </div>
+            <input type="text" id="username" name="username" value="<%= user.username %>" required>
+
+            <div style="width: 100%; text-align: left; align-items: start; margin-bottom: 5px;">
+                <label for="newPassword">New Password:</label>
+            </div>
+            <input type="password" id="newPassword" name="newPassword">
+
+            <div style="display: flex; width: 60%;">
+                <div style="width: 120px; text-align: left; align-items: start;">
+                    <label for="isAdmin">Is Admin:</label>
+                </div>
+                <input type="checkbox" id="isAdmin" name="isAdmin" <% if (user.isAdmin) { %> checked <% } %> value="true">
+            </div>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+
+</html>

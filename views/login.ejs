@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Login Page</title>
+    <style>
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-align: left;
+            color: rgb(0, 191, 255);
+        }
+    
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li style="float:right"><a href="/login">Login</a></li>
+        <li style="float:right"><a href="/registration">Registration</a></li>
+    </ul>
+    <div class="container">
+        <h1>Login</h1>
+
+        <% if (error) { %>
+            <p><%= error %></p>
+        <% } %>
+
+        <form action="/login" method="post">
+            <div style="width: 100%; text-align: left; align-items: start; margin-bottom: 5px;">
+                <label for="username">Username:</label>
+            </div>
+            <input type="text" id="username" name="username" required>
+            <div style="width: 100%; text-align: left; align-items: start; margin-bottom: 5px;">
+                <label for="password">Password:</label>
+            </div>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <footer>
+        <h2 style="color: white;">Mukhidinov Amirzhan SE-2207</h2>
+    </footer>
+</body>
+
+</html>
